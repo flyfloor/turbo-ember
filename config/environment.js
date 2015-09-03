@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'adesk-emberjs',
+    modulePrefix: 'turbo-ember',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -16,6 +16,15 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval' 192.168.56.102:35729",
+      'font-src': "'self' data: http://fonts.gstatic.com",
+      'connect-src': "'self' ws://192.168.56.102:35729",
+      'img-src': "'self'",
+      'style-src': "'self' fonts.googleapis.com",
+      'media-src': "'self'"
     }
   };
 
