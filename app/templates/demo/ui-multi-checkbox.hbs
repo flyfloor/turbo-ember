@@ -1,0 +1,32 @@
+{{outlet}}
+
+
+{{#ui-multi-checkbox}}
+    {{#ui-checkbox }}normal{{/ui-checkbox}}
+    {{#ui-checkbox }}normal{{/ui-checkbox}}
+    {{#ui-checkbox }}normal{{/ui-checkbox}}
+    {{#ui-checkbox }}normal{{/ui-checkbox}}
+    {{#ui-checkbox }}normal{{/ui-checkbox}}
+{{/ui-multi-checkbox}}
+
+    <div class="row" >
+        <div class="column" >
+             {{#ui-checkbox checked=true value=google name="google"}}google{{/ui-checkbox}}
+             {{#ui-checkbox checked=false value=apple name="apple"}}apple{{/ui-checkbox}}
+             {{#ui-checkbox checked=false value=dropBox name="dropbox"}}dropbox{{/ui-checkbox}}
+        </div>
+        <div class="column">
+            <div class="ui right pointing  label">
+                checked:
+            </div>
+            {{#if google }}
+                 google
+            {{/if}}
+            {{#if apple }}
+                 apple
+            {{/if}}
+            {{#if dropBox }}
+                 dropBox
+            {{/if}}
+        </div>
+    </div>

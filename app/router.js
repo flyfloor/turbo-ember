@@ -6,7 +6,12 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-    this.route('index', {path:'/'});
+  this.route('index', {path:'/'});
+  this.route('demo', function(){
+    this.route('ui-button');
+    this.route('ui-checkbox');
+    this.route('ui-multi-checkbox');
+  });
 });
 
 export default Router;
