@@ -1,5 +1,7 @@
 {{#each options as |op|}}
-    {{#ui-checkbox  value=op.value }}{{op.name}}{{/ui-checkbox}}
+    <div class="field" >
+        {{#ui-checkbox  value=op.value }}{{op.name}}{{/ui-checkbox}}
+    </div>
 {{/each}}
 
 {{yield}}
