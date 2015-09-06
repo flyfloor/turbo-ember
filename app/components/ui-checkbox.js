@@ -10,7 +10,7 @@ export default Ember.Component.extend({
     tagName: 'div',
     
     /**
-     * Class names to apply to the button
+     * Class names to apply to the checkbox
      *
      * @property {Ember.Array} classNames
      */
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
     },
 
     /**
-     * Class bindings for the button component
+     * Class bindings for the checkbox component
      *
      * @property {Ember.Array} classNameBindings
      */
@@ -41,20 +41,20 @@ export default Ember.Component.extend({
     theme: '',
 
     /**
-     * Attribute bindings for the button component
+     * Attribute bindings for the checkbox component
      *
      * @property {Ember.String} attributeBindings
      */
     value: null,
 
     /**
-     * Attribute bindings for the button component
+     * Attribute bindings for the checkbox component
      *
      * @property {Ember.String} attributeBindings
      */
-    checked: null,    
+    checked: false,
     /**
-     * Attribute bindings for the button component
+     * Attribute bindings for the checkbox component
      *
      * @property {Ember.String} attributeBindings
      */
@@ -63,27 +63,14 @@ export default Ember.Component.extend({
     initialize: function(argument) {
         this.$().checkbox();
         var name = this.get('name'), 
-            value = this.get('value'), 
-            input = this.$("input"),
+            input = this.$('input'),
+            value = this.get('value'),
             checked = this.get('checked');
             
-        if(name){
-            input.attr("name", name);
-        }
-
-        if(value){
-            input.attr("value", value);
-        }
-
-        if(checked){
-            input.attr("checked", "checked");
-        }else {
-            input.removeAttr("checked", "");
-        }
-
+        input.prop('checked', checked);
+        input.val(value);
         this.$('input').change(Ember.run.bind(this, function() {
-            this.set('value', this.$('input:checked').val());
-            this.set('checked', this.$().find("input").attr("checked"));
+            this.set('checked', this.$('input').is(':checked'));
         }));
 
     }.on('didInsertElement')

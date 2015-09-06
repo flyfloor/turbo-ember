@@ -64,10 +64,8 @@
                 </div>
             </div>
             <div class="column" >
-                {{#ui-checkbox  checked=true  theme="slider" }}slider{{/ui-checkbox}}
-                {{#if checkboxValue}}
-                    <div class="ui left pointing  label" >{{checkboxValue}}</div>
-                {{/if}}
+                {{#ui-checkbox checked=isChecked  value="apple"  theme="slider" }}slider{{/ui-checkbox}}
+                <div class="ui left pointing  label" >{{isChecked}}</div>
             </div>
         </div>
     </div>

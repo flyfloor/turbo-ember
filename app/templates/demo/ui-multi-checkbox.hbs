@@ -1,32 +1,34 @@
 {{outlet}}
 
-
-{{#ui-multi-checkbox}}
-    {{#ui-checkbox }}normal{{/ui-checkbox}}
-    {{#ui-checkbox }}normal{{/ui-checkbox}}
-    {{#ui-checkbox }}normal{{/ui-checkbox}}
-    {{#ui-checkbox }}normal{{/ui-checkbox}}
-    {{#ui-checkbox }}normal{{/ui-checkbox}}
-{{/ui-multi-checkbox}}
-
-    <div class="row" >
-        <div class="column" >
-             {{#ui-checkbox checked=true value=google name="google"}}google{{/ui-checkbox}}
-             {{#ui-checkbox checked=false value=apple name="apple"}}apple{{/ui-checkbox}}
-             {{#ui-checkbox checked=false value=dropBox name="dropbox"}}dropbox{{/ui-checkbox}}
-        </div>
-        <div class="column">
-            <div class="ui right pointing  label">
-                checked:
+<div class="ui grid" >
+    <div class="column" >
+        <div class="ui items" >
+            <div class="item" >
+                <div class="content" >
+                    <div class="header" >
+                        useage 1
+                    </div>
+                    {{#ui-multi-checkbox style="margin:20px 0" value=checkvalue }}
+                        {{#ui-checkbox  value="apple" }}apple{{/ui-checkbox}}
+                        {{#ui-checkbox  value="google" }}google{{/ui-checkbox}}
+                        {{#ui-checkbox  value="dropbox" }}dropbox{{/ui-checkbox}}
+                    {{/ui-multi-checkbox}}
+                    <div class="meta" >
+                        {{checkvalue}}
+                    </div>
+                </div>
             </div>
-            {{#if google }}
-                 google
-            {{/if}}
-            {{#if apple }}
-                 apple
-            {{/if}}
-            {{#if dropBox }}
-                 dropBox
-            {{/if}}
+            <div class="item" >
+                <div class="content" >
+                    <div class="header" >
+                        usage 2
+                    </div>
+                    {{#ui-multi-checkbox options=options value=checkvalue2 }}{{/ui-multi-checkbox}}
+                    <div class="meta" >
+                        {{checkvalue2}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>

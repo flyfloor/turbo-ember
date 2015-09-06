@@ -1,1 +1,5 @@
+{{#each options as |op|}}
+    {{#ui-checkbox  value=op.value }}{{op.name}}{{/ui-checkbox}}
+{{/each}}
+
 {{yield}}
