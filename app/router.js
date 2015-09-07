@@ -16,6 +16,7 @@ Router.map(function() {
     this.route('ui-dropdown');
     this.route('ui-radio');
   });
+  
 });
 
 export default Router;
