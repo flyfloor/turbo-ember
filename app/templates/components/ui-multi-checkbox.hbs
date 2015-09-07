@@ -1,3 +1,6 @@
+{{#if label}}
+	<label>{{label}}</label>
+{{/if}}
 {{#each options as |op|}}
     <div class="field" >
         {{#ui-checkbox value=op.value }}{{op.label}}{{/ui-checkbox}}

@@ -12,3 +12,10 @@ To add images, fonts, or other assets, place them in the public/assets directory
     <div>{{{myOwnHTMLContent}}}</div>
 
 ```
+
+## Error: EACCES, open '/home/zhyq/.cache/bower/registry/bower.herokuapp.com/lookup/ember-cli-test-loader_25e49'
+
+
+sudo bower cache clean --allow-root
+
+rm -rf .cahce/bower

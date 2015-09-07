@@ -1,3 +1,6 @@
+{{#if label}}
+	<label>{{label}}</label>
+{{/if}}
 {{#each options as |op|}}
     <div class="field" >
         {{#ui-radio value=op.value }}{{op.label}}{{/ui-radio}}

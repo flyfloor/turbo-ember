@@ -3,32 +3,44 @@
 <div class="ui grid" >
     <div class="column" >
         <div class="ui items" >
+            <div class="ui dividing header" >example 1</div>
             <div class="item" >
                 <div class="content" >
-                    {{#ui-multi-checkbox value=checkvalue }}
-                        {{#ui-checkbox  value="apple" }}apple{{/ui-checkbox}}
-                        {{#ui-checkbox  value="google" }}google{{/ui-checkbox}}
-                        {{#ui-checkbox  value="dropbox" }}dropbox{{/ui-checkbox}}
-                    {{/ui-multi-checkbox}}
+                    <div class="ui form" >
+                        {{#ui-multi-checkbox theme="inline fields" value=checkvalue }}
+                            <label>choose company</label>
+                            <div class="field" >
+                                {{#ui-checkbox  value="apple" }}apple{{/ui-checkbox}}
+                            </div>
+                            <div class="field" >
+                                {{#ui-checkbox  value="google" }}google{{/ui-checkbox}}
+                            </div>
+                            <div class="field" >
+                                {{#ui-checkbox  value="dropbox" }}dropbox{{/ui-checkbox}}
+                            </div>
+                        {{/ui-multi-checkbox}}
+                    </div>
                     <div class="meta" >
                         {{checkvalue}}
                     </div>
                 </div>
             </div>
+            <div class="ui dividing header" >example 2</div>
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox options=options value=checkvalue2 }}{{/ui-multi-checkbox}}
+                        {{#ui-multi-checkbox theme="grouped fields" label="choose company" options=options value=checkvalue2 }}{{/ui-multi-checkbox}}
                     </div>
                     <div class="meta" >
                         {{checkvalue2}}
                     </div>
                 </div>
             </div>
+            <div class="ui dividing header" >example 3</div>
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox inlineDisplay=true options=options value=checkvalue3 }}{{/ui-multi-checkbox}}
+                        {{#ui-multi-checkbox label="choose company" theme="inline fields" options=options value=checkvalue3 }}{{/ui-multi-checkbox}}
                     </div>
                     <div class="meta" >
                         {{checkvalue3}}

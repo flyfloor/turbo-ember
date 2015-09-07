@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    checkvalue: null,
+    checkvalue: 'google',
     checkvalue2: null,
     checkvalue3: null,
     checkvalueObserver: Ember.observer('checkvalue', function() {

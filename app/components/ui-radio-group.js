@@ -28,21 +28,14 @@ export default Ember.Component.extend({
      *
      * @property {Ember.String} attributeBindings
      */
-    style: '',
-
-    /**
-     * Attribute bindings for the checkbox component
-     *
-     * @property {Ember.String} attributeBindings
-     */
-    inlineDisplay: false,
+    label: '',
 
     /**
      * Attribute bindings for the button component
      *
      * @property {Ember.Array} attributeBindings
      */
-    attributeBindings: ['style'],
+    attributeBindings: [],
 
     /**
      * Class names to apply to the checkbox
@@ -56,22 +49,8 @@ export default Ember.Component.extend({
      *
      * @property {Ember.Array} classNameBindings
      */
-    classNameBindings: ['inlineDisplayClass', 'theme'],
+    classNameBindings: ['theme'],
     theme: '',
-
-    /**
-     * Class string for the internal input element
-     *
-     * @function inputClass
-     * @returns  {string}
-     */
-    inlineDisplayClass: function (argument) {
-        if(this.get('inlineDisplay')){
-            return 'inline fields';
-        }else {
-            return '';
-        }
-    }.property(),
 
     /**
      * Class bindings for the checkbox component
