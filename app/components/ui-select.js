@@ -66,9 +66,8 @@ export default Ember.Component.extend({
 
 		
 		// expose value
-		this.$().change(Ember.run.bind(this, function() {
-		  this.set('value', this.$('select').val());
-		  console.log(`new value ${this.get('value')}`)
+		this.$('select').change(Ember.run.bind(this, function() {
+			this.set('value', this.$('select').val() || '');
 		}));
 
 		// dropdown init
