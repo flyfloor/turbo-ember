@@ -1,5 +1,9 @@
 {{outlet}}
 
-<div class="ui container">
-	{{#ui-select options=options value=value api="/assets/apis/select.json"}}{{/ui-select}}
+<div class="ui grid" >
+    <div class="column" >
+		<div class="">
+			{{#ui-select options=options value=value api="/assets/apis/select.json"}}{{/ui-select}}
+		</div>
+    </div>
 </div>
