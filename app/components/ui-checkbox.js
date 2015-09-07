@@ -68,6 +68,7 @@ export default Ember.Component.extend({
             checked = this.get('checked');
             
         input.prop('checked', checked);
+        input.attr('name', name);
         input.val(value);
         this.$('input').change(Ember.run.bind(this, function() {
             this.set('checked', this.$('input').is(':checked'));

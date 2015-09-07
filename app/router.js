@@ -15,6 +15,7 @@ Router.map(function() {
     this.route('ui-multi-select');
     this.route('ui-dropdown');
     this.route('ui-radio');
+    this.route('ui-radio-group');
   });
 });
 

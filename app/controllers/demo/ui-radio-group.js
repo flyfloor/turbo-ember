@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    checkvalue: [],
-    checkvalue2: ['google', 'apple'],
-    checkvalue3: [],
+    checkvalue: null,
+    checkvalue2: null,
+    checkvalue3: null,
     checkvalueObserver: Ember.observer('checkvalue', function() {
         // body...
     }),

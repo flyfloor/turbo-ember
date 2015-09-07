@@ -5,11 +5,11 @@
         <div class="ui items" >
             <div class="item" >
                 <div class="content" >
-                    {{#ui-multi-checkbox value=checkvalue }}
-                        {{#ui-checkbox  value="apple" }}apple{{/ui-checkbox}}
-                        {{#ui-checkbox  value="google" }}google{{/ui-checkbox}}
-                        {{#ui-checkbox  value="dropbox" }}dropbox{{/ui-checkbox}}
-                    {{/ui-multi-checkbox}}
+                    {{#ui-radio-group value=checkvalue name="co1" }}
+                        {{#ui-radio  value="apple" }}apple{{/ui-radio}}
+                        {{#ui-radio  value="google" }}google{{/ui-radio}}
+                        {{#ui-radio  value="dropbox" }}dropbox{{/ui-radio}}
+                    {{/ui-radio-group}}
                     <div class="meta" >
                         {{checkvalue}}
                     </div>
@@ -18,7 +18,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox options=options value=checkvalue2 }}{{/ui-multi-checkbox}}
+                        {{#ui-radio-group name="co2" options=options value=checkvalue2 }}{{/ui-radio-group}}
                     </div>
                     <div class="meta" >
                         {{checkvalue2}}
@@ -28,7 +28,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox inlineDisplay=true options=options value=checkvalue3 }}{{/ui-multi-checkbox}}
+                        {{#ui-radio-group name="co3" inlineDisplay=true  options=options value=checkvalue3 }}{{/ui-radio-group}}
                     </div>
                     <div class="meta" >
                         {{checkvalue3}}
