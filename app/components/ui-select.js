@@ -9,10 +9,10 @@ export default Ember.Component.extend({
 	 */
 	tagName: 'div',
 	value: '',
-	label: '下拉选择',
+	label: 'single select',
 	allowBlank: true,
 	allowAdditions: false,
-	placeHolder: '下拉选择...',
+	placeHolder: 'type something...',
 	/**
 	 * Class names to apply to the button
 	 *
@@ -67,12 +67,12 @@ export default Ember.Component.extend({
 		
 		// expose value
 		this.$().change(Ember.run.bind(this, function() {
-		  this.set('value', this.$().val());
+		  this.set('value', this.$('select').val());
 		  console.log(`new value ${this.get('value')}`)
 		}));
 
 		// dropdown init
-    $('select.ui.search.dropdown').dropdown(config)
+    this.$('select').dropdown(config)
 
 	}.on('didInsertElement')
 });
