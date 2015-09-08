@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('demo', function(){
     this.route('ui-alert');
     this.route('ui-button');
+    this.route('ui-panel');
     this.route('ui-checkbox');
     this.route('ui-multi-checkbox');
     this.route('ui-select');
