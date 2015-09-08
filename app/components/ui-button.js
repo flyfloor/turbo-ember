@@ -37,11 +37,12 @@ export default Ember.Component.extend({
      *
      * @property {Ember.Array} classNameBindings
      */
-    classNameBindings: ['theme', 'color', 'size'],
+    classNameBindings: ['theme', 'color', 'size', 'disabled:disabled:', 'loading:loading:'],
     theme: '',
     color: '',
     size: '',
-
+    disabled:false,
+    loading: false,
     /**
      * Attribute bindings for the button component
      *
