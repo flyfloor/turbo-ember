@@ -17,6 +17,7 @@ Router.map(function() {
     this.route('ui-radio');
     this.route('ui-radio-group');
   });
+  
 });
 
 export default Router;
