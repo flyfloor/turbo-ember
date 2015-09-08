@@ -1,24 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	/**
-	 * The root component element
-	 *
-	 * @property {Ember.String} tagName
-	 * @default  "button"
-	 */
 	tagName: 'div',
-	type: 'info',
+	type: 'text',
+	fluid: '',
+	label: 'text input',
+	icon: '',
 	theme: '',
 	color: '',
 	size: '',
-	icon: 'info circle',
 	/**
 	 * Class names to apply to the button
 	 *
 	 * @property {Ember.Array} classNames
 	 */
-	classNames: ['ui', 'message', 'icon'],
+	classNames: ['ui', 'field'],
 
 	// -------------------------------------------------------------------------
 	// Actions
@@ -38,19 +34,7 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} classNameBindings
 	 */
-	classNameBindings: ['theme', 'color', 'size', 'type'],
-	iconMap: {
-		success: 'check circle',
-		error: 'bug',
-		warning: 'warning sign'
-	},
-
-	init: function(){
-		this._super();
-		let [type, iconMap] = [this.get('type'), this.get('iconMap')];
-		for (let item in iconMap) 
-			if (item === type) this.set('icon', iconMap[item]);
-	},
+	classNameBindings: ['theme', 'color', 'size'],
 
 	/**
 	 * Attribute bindings for the button component
@@ -58,9 +42,6 @@ export default Ember.Component.extend({
 	 * @property {Ember.Array} attributeBindings
 	 */
 	initialize: function(argument) {
-		this.$('.close').on('click', function() {
-		    $(this).closest('.message').transition('fade');
-		})
+		
 	}.on('didInsertElement'),
-
 });

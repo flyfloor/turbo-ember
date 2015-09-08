@@ -1,15 +1,21 @@
-<div class="ui secondary  menu">
-  {{#link-to "demo.ui-button" class="item" }}ui-button{{/link-to}}
-  {{#link-to "demo.ui-checkbox" class="item" }}ui-checkbox{{/link-to}}
-  {{#link-to "demo.ui-multi-checkbox" class="item" }}ui-multi-checkbox{{/link-to}}
-  {{#link-to "demo.ui-radio" class="item" }}ui-radio{{/link-to}}
-  {{#link-to "demo.ui-radio-group" class="item" }}ui-radio-group{{/link-to}}
+<div class="ui grid">
+    <div class="four wide column">
+        <div class="ui vertical fluid tabular menu">
+            {{#link-to "demo.ui-button" class="item" }}ui-button{{/link-to}}
+            {{#link-to "demo.ui-checkbox" class="item" }}ui-checkbox{{/link-to}}
+            {{#link-to "demo.ui-multi-checkbox" class="item" }}ui-multi-checkbox{{/link-to}}
+            {{#link-to "demo.ui-radio" class="item" }}ui-radio{{/link-to}}
+            {{#link-to "demo.ui-radio-group" class="item" }}ui-radio-group{{/link-to}}
 
-  {{#link-to "demo.ui-select" class="item" }}ui-select{{/link-to}}
-  {{#link-to "demo.ui-multi-select" class="item" }}ui-multi-select{{/link-to}}
+            {{#link-to "demo.ui-select" class="item" }}ui-select{{/link-to}}
+            {{#link-to "demo.ui-multi-select" class="item" }}ui-multi-select{{/link-to}}
 
-  {{#link-to "demo.ui-alert" class="item" }}ui-alert{{/link-to}}
-</div>
-<div class="ui container" >
-    {{outlet}}
+            {{#link-to "demo.ui-alert" class="item" }}ui-alert{{/link-to}}
+            {{#link-to "demo.ui-panel" class="item" }}ui-panel{{/link-to}}
+            {{#link-to "demo.ui-input" class="item" }}ui-input{{/link-to}}
+        </div>
+    </div>
+    <div class="twelve wide stretched column" >
+      {{outlet}}
+    </div>
 </div>

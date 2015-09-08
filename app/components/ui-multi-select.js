@@ -57,10 +57,10 @@ export default Ember.Component.extend({
 		// init select option
 		if (optionsVal) {
 			let $optionsDom = this.$('option');
-			for (let item of selectedVal)
-				for (let i = 0; i < $optionsDom.length; i++) 
-					if (item === this.$('option').eq(i).val()){
-						this.$('option').eq(i).attr('selected', 'selected');
+			for (let i = 0; i < selectedVal.length; i++) 
+				for (let j = 0; j < $optionsDom.length; j++) 
+					if (selectedVal[i] === this.$('option').eq(j).val()){
+						this.$('option').eq(j).attr('selected', 'selected');
 						break;
 					}
 		}

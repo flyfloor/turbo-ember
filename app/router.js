@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('index', {path:'/'});
   this.route('demo', function(){
     this.route('ui-alert');
+    this.route('ui-input');
     this.route('ui-button');
     this.route('ui-panel');
     this.route('ui-checkbox');
