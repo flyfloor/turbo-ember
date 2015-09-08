@@ -30,6 +30,7 @@
 5. table(edit field)  
 6. grid  
 7. dropdown
+8. alert
 
 ###enhance  
 
