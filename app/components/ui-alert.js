@@ -12,12 +12,13 @@ export default Ember.Component.extend({
 	theme: '',
 	color: '',
 	size: '',
+	icon: 'info circle',
 	/**
 	 * Class names to apply to the button
 	 *
 	 * @property {Ember.Array} classNames
 	 */
-	classNames: ['ui', 'message'],
+	classNames: ['ui', 'message', 'icon'],
 
 	// -------------------------------------------------------------------------
 	// Actions
@@ -31,9 +32,6 @@ export default Ember.Component.extend({
 	 * @function click
 	 * @returns  {void}
 	 */
-	click: function() {
-	    this.sendAction();
-	},
 
 	/**
 	 * Class bindings for the button component
@@ -42,14 +40,30 @@ export default Ember.Component.extend({
 	 */
 	classNameBindings: ['theme', 'color', 'size', 'type'],
 
+	init: function(){
+		this._super();
+		switch (this.get('type')) {
+			case 'success':
+				this.set('icon', 'check circle'); 
+				break;
+			case 'error':
+				this.set('icon', 'bug'); 
+				break;
+			default:
+				break;
+		}
+	},
+
 	/**
 	 * Attribute bindings for the button component
 	 *
 	 * @property {Ember.Array} attributeBindings
 	 */
-	initialize: function(argument) {
+	eventHandlers: function(argument) {
 		this.$('.close').on('click', function() {
 		    $(this).closest('.message').transition('fade');
 		})
-	}.on('didInsertElement')
+		
+	}.on('didInsertElement'),
+
 });
