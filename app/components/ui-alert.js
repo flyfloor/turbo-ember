@@ -39,19 +39,17 @@ export default Ember.Component.extend({
 	 * @property {Ember.Array} classNameBindings
 	 */
 	classNameBindings: ['theme', 'color', 'size', 'type'],
+	iconMap: {
+		success: 'check circle',
+		error: 'bug',
+		warning: 'warning sign'
+	},
 
 	init: function(){
 		this._super();
-		switch (this.get('type')) {
-			case 'success':
-				this.set('icon', 'check circle'); 
-				break;
-			case 'error':
-				this.set('icon', 'bug'); 
-				break;
-			default:
-				break;
-		}
+		let [type, iconMap] = [this.get('type'), this.get('iconMap')];
+		for (let item in iconMap) 
+			if (item === type) this.set('icon', iconMap[item]);
 	},
 
 	/**
@@ -63,7 +61,6 @@ export default Ember.Component.extend({
 		this.$('.close').on('click', function() {
 		    $(this).closest('.message').transition('fade');
 		})
-		
 	}.on('didInsertElement'),
 
 });
