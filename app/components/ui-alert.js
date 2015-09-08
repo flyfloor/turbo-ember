@@ -59,7 +59,7 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} attributeBindings
 	 */
-	eventHandlers: function(argument) {
+	initialize: function(argument) {
 		this.$('.close').on('click', function() {
 		    $(this).closest('.message').transition('fade');
 		})

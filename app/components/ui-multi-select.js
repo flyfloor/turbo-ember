@@ -47,7 +47,7 @@ export default Ember.Component.extend({
 			allowAdditions: this.get('allowAdditions'),
 		}
 
-		console.log(`old value ${this.get('value')}`)
+		// console.log(`old value ${this.get('value')}`)
 
 		let [optionsVal, selectedVal] = [this.get('options'), this.get('value')];
 		
