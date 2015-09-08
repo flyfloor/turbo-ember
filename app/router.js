@@ -8,7 +8,9 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('index', {path:'/'});
   this.route('demo', function(){
+    this.route('ui-alert');
     this.route('ui-button');
+    this.route('ui-panel');
     this.route('ui-checkbox');
     this.route('ui-multi-checkbox');
     this.route('ui-select');

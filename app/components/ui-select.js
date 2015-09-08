@@ -12,6 +12,7 @@ export default Ember.Component.extend({
 	label: 'single select',
 	allowBlank: true,
 	allowAdditions: false,
+	search: 'search',
 	placeHolder: 'type something...',
 	/**
 	 * Class names to apply to the button
@@ -31,9 +32,6 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} classNameBindings
 	 */
-	// classNameBindings: ['theme', 'color', 'size'],
-	// theme: '',
-	// color: '',
 
 	/**
 	 * Attribute bindings for the button component
@@ -47,7 +45,7 @@ export default Ember.Component.extend({
 			allowAdditions: this.get('allowAdditions'),
 		}
 
-		console.log(`old value ${this.get('value')}`)
+		// console.log(`old value ${this.get('value')}`)
 
 		let [optionsVal, selectedVal] = [this.get('options'), this.get('value')];
 		
@@ -71,7 +69,7 @@ export default Ember.Component.extend({
 		}));
 
 		// dropdown init
-    this.$('select').dropdown(config)
+    	this.$('select').dropdown(config)
 
 	}.on('didInsertElement')
 });
