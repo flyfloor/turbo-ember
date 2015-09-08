@@ -1,0 +1,29 @@
+{{outlet}}
+
+<div class="ui grid">
+	<div class="column">
+		<div class="items">
+			<div class="item">
+				{{#ui-input label="默认输入"}}{{/ui-input}}
+			</div>
+			<h4>无标签</h4>
+			<br/>
+			<div class="item">
+				{{#ui-input label=""}}{{/ui-input}}
+			</div>
+			<br/>
+			<h4>不同类型 input</h4>
+			<div class="item">
+				{{#ui-input label="email" type="email"}}{{/ui-input}}
+				{{#ui-input label="number" type="number"}}{{/ui-input}}
+				{{#ui-input label="range" type="range"}}{{/ui-input}}
+				{{#ui-input label="date" type="date"}}{{/ui-input}}
+			</div>
+			<br/>
+			<div class="item">
+				{{#ui-input label="响应式" block=true}}{{/ui-input}}
+			</div>
+			<br/>
+		</div>
+	</div>
+</div>
