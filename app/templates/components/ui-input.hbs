@@ -1,12 +1,7 @@
 <label>{{label}}</label>
-{{#if block}}
-	<div class="ui fluid input">
+<div>
+	<div class="ui {{fluid}} {{size}} {{icon}} input">
 		<input type="{{type}}"/>
+		{{yield}}
 	</div>
-{{else}}
-	<div>
-		<div class="ui input">
-			<input type="{{type}}"/>
-		</div>
-	</div>
-{{/if}}
+</div>

@@ -3,8 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'div',
 	type: 'text',
-	block: false,
+	fluid: '',
 	label: 'text input',
+	icon: '',
 	theme: '',
 	color: '',
 	size: '',
