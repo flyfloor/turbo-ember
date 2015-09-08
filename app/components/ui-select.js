@@ -12,6 +12,7 @@ export default Ember.Component.extend({
 	label: 'single select',
 	allowBlank: true,
 	allowAdditions: false,
+	search: 'search',
 	placeHolder: 'type something...',
 	/**
 	 * Class names to apply to the button
@@ -31,9 +32,6 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} classNameBindings
 	 */
-	// classNameBindings: ['theme', 'color', 'size'],
-	// theme: '',
-	// color: '',
 
 	/**
 	 * Attribute bindings for the button component
