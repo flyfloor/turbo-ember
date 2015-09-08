@@ -19,13 +19,13 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval' 192.168.56.102:35729",
-      'font-src': "'self' data: http://fonts.gstatic.com",
-      'connect-src': "'self' ws://192.168.56.102:35729",
-      'img-src': "'self'",
-      'style-src': "'self' fonts.googleapis.com",
-      'media-src': "'self'"
-    }
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      'font-src': "'self' data: localhost",
+      'connect-src': "'self'",
+      'img-src': "'self' www.adesk.com www.androidesk.com",
+      'style-src': "'self' 'unsafe-inline' localhost",
+      'frame-src': "'self'"
+    },
   };
 
   if (environment === 'development') {
