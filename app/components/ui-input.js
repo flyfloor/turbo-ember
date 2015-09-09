@@ -3,12 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'div',
 	type: 'text',
-	fluid: '',
+	fluid: 'fluid',
 	label: 'text input',
 	icon: '',
-	theme: '',
-	color: '',
 	size: '',
+	theme: '',
 	/**
 	 * Class names to apply to the button
 	 *
@@ -34,7 +33,7 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} classNameBindings
 	 */
-	classNameBindings: ['theme', 'color', 'size'],
+	classNameBindings: ['theme'],
 
 	/**
 	 * Attribute bindings for the button component

@@ -1,1 +1,17 @@
-{{yield}}
+<i class="close icon"></i>
+{{#if title}}
+  <div class="header">
+    {{title}}
+  </div>
+{{/if}}
+<div class="content">
+    {{yield}}
+</div>
+<div class="actions">
+<div class="ui black deny button">
+    Nope
+</div>
+<div class="ui positive right labeled icon button">
+    Yep, that's me <i class="checkmark icon"></i>
+</div>
+</div>
