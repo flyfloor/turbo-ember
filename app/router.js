@@ -21,6 +21,7 @@ Router.map(function() {
     this.route('ui-radio-group');
     this.route('ui-label');
     this.route('ui-modal');
+    this.route('form');
   });
 
 });

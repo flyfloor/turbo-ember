@@ -1,0 +1,21 @@
+{{outlet}}
+
+<div class="ui form" >
+    <h1 class="ui header" >登录</h1>
+    {{#ui-input label="用户名"}}{{/ui-input}}
+    {{#ui-input label="密码"}}{{/ui-input}}
+    {{#ui-button theme="primary" }}登录{{/ui-button}}
+</div>
+
+
+<div class="ui form" >
+    <div class="two fields" >
+        {{#ui-input label="性别"}}{{/ui-input}}
+        {{#ui-input label="姓名"}}{{/ui-input}}
+    </div>
+    <div class="three fields" >
+        {{#ui-select label="省" options=options1 valuePath="id" labelPath="name"  value=value}}{{/ui-select}}
+        {{#ui-select label="市" options=options2 value=value}}{{/ui-select}}
+        {{#ui-select label="县" options=options3 value=value}}{{/ui-select}}        
+    </div>
+</div>

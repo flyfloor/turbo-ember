@@ -14,6 +14,8 @@ export default Ember.Component.extend({
 	allowAdditions: false,
 	search: 'search',
 	placeHolder: 'type something...',
+	valuePath: 'value',
+	namePath: 'name',
 	/**
 	 * Class names to apply to the button
 	 *
@@ -47,29 +49,41 @@ export default Ember.Component.extend({
 
 		// console.log(`old value ${this.get('value')}`)
 
-		let [optionsVal, selectedVal] = [this.get('options'), this.get('value')];
-		
+		let [optionsVal, selectedVal, $select, namePath, valuePath] = [
+			this.get('options'), 
+			this.get('value'),
+			this.$('select'),
+			this.get('namePath'),
+			this.get('valuePath'),
+		];
+
 		// if remote
 		if (this.get('api')) config.apiSettings = { url: this.get('api') };
 		
 		// init select option
 		if (optionsVal) {
-			let $optionsDom = this.$('option');
-			for (let i = 0; i < $optionsDom.length; i ++) 
-				if (selectedVal === this.$('option').eq(i).val()) {
-					this.$('option').eq(i).attr('selected', 'selected');
-					break;
+			let optionsDom = '';
+			Ember.$.each(optionsVal, function(_, item) {
+				let selected = '';
+				let	option = '<option value="'+item[valuePath]+'" selected="'+selected+'" >'+item[namePath]+'</option>';
+				if(selectedVal===item[valuePath]){
+					selected = 'selected';
 				}
+
+				optionsDom += option;
+			});
+
+			$select.append(optionsDom);
 		}
 
 		
 		// expose value
-		this.$('select').change(Ember.run.bind(this, function() {
-			this.set('value', this.$('select').val() || '');
+		$select.change(Ember.run.bind(this, function() {
+			this.set('value', $select.val() || '');
 		}));
 
 		// dropdown init
-    	this.$('select').dropdown(config)
+    	$select.dropdown(config);
 
 	}.on('didInsertElement')
 });
