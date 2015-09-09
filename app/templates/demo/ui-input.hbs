@@ -2,39 +2,30 @@
 
 <div class="ui grid">
 	<div class="column">
-		<div class="items">
-			<div class="item">
+		<div class="ui form">
+			<div class="field">
 				{{#ui-input label="默认输入"}}{{/ui-input}}
-			</div>
-			<h4>无标签</h4>
-			<br/>
-			<div class="item">
+				<h4>无标签</h4>
 				{{#ui-input label=""}}{{/ui-input}}
-			</div>
-			<br/>
-			<div class="item">
-				{{#ui-input label="响应式" fluid="fluid"}}{{/ui-input}}
-			</div>
-			<br/>
-			<div class="item">
+				{{#ui-input label="非响应式" fluid=""}}{{/ui-input}}
 				{{#ui-input label="超大号输入" size="massive"}}{{/ui-input}}
-			</div>
-			<br/>
-			<div class="item">
 				{{#ui-input label="带 icon 的输入" icon="icon"}}
-					<i class="search icon"></i>
+					<i class="heart icon"></i>
 				{{/ui-input}}
-			</div>
-			<br/>
-			<h4>不同类型 input</h4>
-			<div class="item">
-				{{#ui-input label="email" type="email"}}{{/ui-input}}
-				{{#ui-input label="number" type="number"}}{{/ui-input}}
-				{{#ui-input label="range" type="range"}}{{/ui-input}}
+				<h4>不同类型 input</h4>
+				<div class="two fields">
+					<div class="field">
+						{{#ui-input label="email" type="email"}}{{/ui-input}}
+					</div>
+					<div class="field">
+						{{#ui-input label="range" type="range"}}{{/ui-input}}
+					</div>
+				</div>
 				{{#ui-input label="date" type="date"}}{{/ui-input}}
 				{{#ui-input label="datetime" type="datetime-local"}}{{/ui-input}}
+				{{#ui-select label="品牌选择"api="/assets/apis/select.json"}}{{/ui-select}}
+				{{#ui-multi-select label="品牌选择(多选)"api="/assets/apis/select.json"}}{{/ui-multi-select}}
 			</div>
-			<br/>
 		</div>
 	</div>
 </div>

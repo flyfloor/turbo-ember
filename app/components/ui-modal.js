@@ -2,25 +2,21 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	tagName: 'div',
-	type: 'text',
-	fluid: 'fluid',
-	label: 'text input',
-	icon: '',
-	size: '',
-	theme: '',
+	display: false,
 	/**
 	 * Class names to apply to the button
 	 *
 	 * @property {Ember.Array} classNames
 	 */
-	classNames: ['ui', 'field'],
+	classNames: ['ui', 'modal'],
 
 	// -------------------------------------------------------------------------
 	// Actions
 
 	// -------------------------------------------------------------------------
 	// Events
-
+	
+	classNameBindings: [],
 	/**
 	 * Alert external code about the click
 	 *
@@ -33,7 +29,6 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} classNameBindings
 	 */
-	classNameBindings: ['theme'],
 
 	/**
 	 * Attribute bindings for the button component
@@ -41,6 +36,11 @@ export default Ember.Component.extend({
 	 * @property {Ember.Array} attributeBindings
 	 */
 	initialize: function(argument) {
-		
+		let display = this.get('display');
+		if (display) {
+			this.$('').modal('show');
+		} else {
+			this.$('').modal('hide');
+		}
 	}.on('didInsertElement'),
 });
