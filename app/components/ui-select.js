@@ -9,13 +9,14 @@ export default Ember.Component.extend({
 	 */
 	tagName: 'div',
 	value: '',
-	label: 'single select',
+	label: '',
 	allowBlank: true,
 	allowAdditions: false,
 	search: 'search',
-	placeHolder: 'type something...',
+	placeHolder: '',
 	valuePath: 'value',
 	namePath: 'name',
+	options: [],
 	/**
 	 * Class names to apply to the button
 	 *
@@ -42,48 +43,57 @@ export default Ember.Component.extend({
 	 */
 
 	initialize: function (argument) {
-		let config = {
-			maxSelections: this.get('maxSelections') || 5,
-			allowAdditions: this.get('allowAdditions'),
+		this.setupOptions();
+	}.on('didInsertElement'),
+
+	/**
+	 * Class bindings for the button component
+	 *
+	 * @property {Ember.Array} classNameBindings
+	*/
+	setupOptions: function(){
+	 	let options = this.get('options'), 
+	 		valuePath = this.get('valuePath'),
+	 		namePath = this.get('namePath'),
+	 		selectedVal = this.get('value'),
+	 		label = this.get('label'),
+	 		allowBlank = this.get('allowBlank'),
+	 		placeHolder = this.get('placeHolder'),
+	 		search = this.get('search');
+
+	 	this.$().empty();
+	 	
+	 	// init select option
+	 	let selectDom = '';
+	 	if(label){
+	 		selectDom += '<label>'+label+'</label>';
+	 	}
+		selectDom += '<select class="ui dropdown '+search+'">';
+		if (allowBlank){
+			selectDom += '<option value="">'+placeHolder+'</option>';
 		}
 
-		// console.log(`old value ${this.get('value')}`)
-
-		let [optionsVal, selectedVal, $select, namePath, valuePath] = [
-			this.get('options'), 
-			this.get('value'),
-			this.$('select'),
-			this.get('namePath'),
-			this.get('valuePath'),
-		];
-
-		// if remote
-		if (this.get('api')) config.apiSettings = { url: this.get('api') };
-		
-		// init select option
-		if (optionsVal) {
-			let optionsDom = '';
-			Ember.$.each(optionsVal, function(_, item) {
+		if (options) {
+			options.forEach(function(item){
 				let selected = '';
-				let	option = '<option value="'+item[valuePath]+'" selected="'+selected+'" >'+item[namePath]+'</option>';
 				if(selectedVal===item[valuePath]){
-					selected = 'selected';
+					selected = 'selected="selected"';
 				}
-
-				optionsDom += option;
+				let	option = '<option value="'+item[valuePath]+'"'+selected+'>'+item[namePath]+'</option>';
+				selectDom += option;
 			});
-
-			$select.append(optionsDom);
 		}
+		selectDom += '</select>';
+		this.$().append(selectDom);
 
-		
-		// expose value
-		$select.change(Ember.run.bind(this, function() {
-			this.set('value', $select.val() || '');
-		}));
-
-		// dropdown init
-    	$select.dropdown(config);
-
-	}.on('didInsertElement')
+		let that = this;
+    	this.$('select').dropdown({
+    		maxSelections: that.get('maxSelections') || 5,
+			allowAdditions: that.get('allowAdditions'),
+    		apiSettings: that.get('api') ? { url: this.get('api') } : false,
+    		onChange: function(value, text, $choice){
+    			that.set('value', value);
+    		}
+    	});
+	 }.observes('options')
 });

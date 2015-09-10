@@ -51,15 +51,61 @@ export default Ember.Component.extend({
      * @property {Ember.Array} classNameBindings
      */
     classNameBindings: ['theme'],
-    theme: '',
+    theme: 'grouped fields',
     
     /**
-     * Class bindings for the checkbox component
+     * options for the checkbox component
      *
-     * @property {Ember.Array} classNameBindings
+     * @property {Ember.Array} options
      */
     options: [],
 
+    /**
+     * options for the checkbox component
+     *
+     * @property {Ember.Array} options
+     */
+    _options: [],
+
+    /**
+     * label key for option
+     *
+     * @property {Ember.String} labelPath
+     */
+    labelPath: 'label',
+
+    /**
+     * value key for option
+     *
+     * @property {Ember.String} valuePath
+     */
+    valuePath: 'value',
+
+    /**
+     * value key for option
+     *
+     * @property {Ember.String} valuePath
+     */
+    optionTag: 'div',
+
+    /**
+     * value key for option
+     *
+     * @property {Ember.String} valuePath
+     */
+    optionTheme: 'field',
+
+    init: function(){
+        this._super();
+        let _options = [];
+        this.get('options').forEach(Ember.run.bind(this, function(item){
+            _options.push({
+                'label': item[this.get('labelPath')],
+                'value': item[this.get('valuePath')],
+            });
+        }));
+        this.set('_options', _options);
+    },
     initialize: function (argument) {
         this.$('input').change(Ember.run.bind(this, function() {
             var newValue = this.$('input:checked').map(function(index, item){

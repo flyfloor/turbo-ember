@@ -41,6 +41,8 @@ export default Ember.Component.extend({
 	 * @property {Ember.Array} attributeBindings
 	 */
 	initialize: function(argument) {
-		
+		this.$('input').change(Ember.run.bind(this, function(){
+			this.set('value', this.$('input').val());
+		}));
 	}.on('didInsertElement'),
 });

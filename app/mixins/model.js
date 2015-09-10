@@ -1,6 +1,6 @@
-import Ember from "ember";
+import Ember from 'ember';
 
-Ember.Model = Ember.Object.extend(Ember.Evented, {
+export default Ember.Mixin.create(Ember.Evented, {
     rootURL: '',
     rootKey: '',
     url: '',
@@ -10,7 +10,7 @@ Ember.Model = Ember.Object.extend(Ember.Evented, {
     }.property('url'),
     save: function(model) {
         var $this = this;
-        var primaryKey = this.get('primaryKey')
+        var primaryKey = this.get('primaryKey');
         var record = {};
 
         //filter model data
@@ -26,7 +26,7 @@ Ember.Model = Ember.Object.extend(Ember.Evented, {
         if (model[primaryKey]) {
             record[primaryKey] = model[primaryKey];
             url = this.get('api') + '/' + model[primaryKey];
-            method = 'put'
+            method = 'put';
         }
 
         return Ember.$.ajax({
@@ -65,12 +65,13 @@ Ember.Model = Ember.Object.extend(Ember.Evented, {
         });
     },
     findOne: function(id) {
-        return Ember.$.getJSON(this.get('api') + '/' + id).then(function(data) {
+        var $this = this;
+        return Ember.$.getJSON($this.get('api') + '/' + id).then(function(data) {
             return Ember.Object.create(data.res[$this.get('rootKey')]);
         });
     },
     _filterParams: function(params) {
-        if (!params) return;
+        if (!params) {return;}
         for (var k in params) {
             if (params.hasOwnProperty(k) && !params[k]) {
                 delete params[k];
@@ -78,56 +79,4 @@ Ember.Model = Ember.Object.extend(Ember.Evented, {
         }
         return params;
     }
-});
-
-
-Ember.Model.Store = Ember.Object.extend({
-    modelFor: function(type) {
-        var klass = this.container.lookupFactory('model:' + type);
-        return klass.create();
-    },
-    find: function(type, params) {
-        return this.modelFor(type).find(params);
-    },
-    findOne: function(type, _id) {
-        return this.modelFor(type).findOne(_id);
-    },
-    createRecord: function(type) {
-        return this.modelFor(type).createRecord();
-    },
-    deleteRecord: function(type, model) {
-        return this.modelFor(type).deleteRecord(model);
-    },
-    save: function(type, model) {
-        return this.modelFor(type).save(model);
-    },
-    emptyAttrs: function(type, model, filterKeys, unfilterKeys) {
-        var emptyKeys = [];
-        var filtered = filterKeys || Ember.keys(this.modelFor(type).model);
-        var unfiltered = unfilterKeys || [];
-        
-        var finallyfiltered = filtered.filter(function(item, index){
-            return unfiltered.indexOf(item) === -1;
-        });
-
-        Ember.$.each(finallyfiltered, function(index, key) {
-            if (typeof key === "string") {
-                if (Ember.isEmpty(model.get(key))) {
-                    emptyKeys.push(key);
-                }
-            }
-        });
-        return emptyKeys;
-    }
-});
-
-Ember.onLoad('Ember.Application', function(Application) {
-    Application.initializer({
-        name: "store",
-        initialize: function(container, application) {
-            application.register('store:main', container.lookupFactory('store:application') || Ember.Model.Store);
-            application.inject('route', 'store', 'store:main');
-            application.inject('controller', 'store', 'store:main');
-        }
-    });
 });

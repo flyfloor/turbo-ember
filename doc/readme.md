@@ -19,3 +19,7 @@ To add images, fonts, or other assets, place them in the public/assets directory
 sudo bower cache clean --allow-root
 
 rm -rf .cahce/bower
+
+
+## property should not be set
+

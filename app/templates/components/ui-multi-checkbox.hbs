@@ -1,10 +1,14 @@
 {{#if label}}
 	<label>{{label}}</label>
 {{/if}}
-{{#each options as |op|}}
-    <div class="field" >
-        {{#ui-checkbox value=op.value }}{{op.label}}{{/ui-checkbox}}
-    </div>
+{{#each _options as |op|}}
+    {{#if optionTheme}}
+        <div class={{optionTheme}} >
+            {{#ui-checkbox value=op.value  tagName=optionTag }}{{op.label}}{{/ui-checkbox}}
+        </div>
+    {{else}}
+        {{#ui-checkbox value=op.value  tagName=optionTag }}{{op.label}}{{/ui-checkbox}}
+    {{/if}}
 {{/each}}
 
 {{yield}}
