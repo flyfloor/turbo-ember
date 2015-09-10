@@ -1,31 +1,114 @@
 {{outlet}}
 
+<h4 class="ui header">focus</h4>
+<div class="html ui top attached segment">
+	{{#ui-input focus=true}}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input focus=true}}\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">focus</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="icon" loading=true}}<i class="search icon"></i>{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input theme="icon" loading=true}}<i class="search icon"></i>\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">error</h4>
+<div class="html ui top attached segment">
+	{{#ui-input error=true}}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input error=true}}\{{/ui-input}}
+	</code>
+</div>
+
+
+<h4 class="ui header">disabled</h4>
+<div class="html ui top attached segment">
+	{{#ui-input disabled=true value="search" }}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input disabled=true}}\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">fluid</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="fluid icon" value="search" }}
+			<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">action</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="fluid action" value="search" }}
+		{{#ui-button}}search{{/ui-button}}
+	{{/ui-input}}
+</div>
+
+
+<h4 class="ui header">mini</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="mini icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">small</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="small icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">big</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="big icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">huge</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="huge icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+
 <div class="ui grid">
 	<div class="column">
 		<div class="ui form">
-			<div class="field">
-				{{#ui-input label="默认输入"}}{{/ui-input}}
-				<h4>无标签</h4>
-				{{#ui-input label=""}}{{/ui-input}}
-				{{#ui-input label="非响应式" fluid=""}}{{/ui-input}}
-				{{#ui-input label="超大号输入" size="massive"}}{{/ui-input}}
-				{{#ui-input label="带 icon 的输入" icon="icon"}}
-					<i class="heart icon"></i>
-				{{/ui-input}}
-				<h4>不同类型 input</h4>
-				<div class="two fields">
-					<div class="field">
-						{{#ui-input label="email" type="email"}}{{/ui-input}}
-					</div>
-					<div class="field">
-						{{#ui-input label="range" type="range"}}{{/ui-input}}
-					</div>
-				</div>
-				{{#ui-input label="date" type="date"}}{{/ui-input}}
-				{{#ui-input label="datetime" type="datetime-local"}}{{/ui-input}}
-				{{#ui-select label="品牌选择"api="/assets/apis/select.json"}}{{/ui-select}}
-				{{#ui-multi-select label="品牌选择(多选)"api="/assets/apis/select.json"}}{{/ui-multi-select}}
+			<div class="field" >
+				<label>date</label>
+				{{#ui-input type="date"}}{{/ui-input}}
 			</div>
+			<div class="field">
+				<label>普通输入框</label>
+				{{#ui-input}}{{/ui-input}}
+			</div>
+			<div class="two fields" >
+				<div class="field" >
+					<label>普通输入框</label>
+					{{#ui-input}}{{/ui-input}}
+				</div>
+				<div class="field" >
+					<label>普通输入框</label>
+					{{#ui-input}}{{/ui-input}}
+				</div>
+			</div>
+			{{#ui-form-input theme="inline" }}
+				普通输入框
+			{{/ui-form-input}}
 		</div>
 	</div>
 </div>

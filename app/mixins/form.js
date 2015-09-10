@@ -120,7 +120,7 @@ var FormMixin = Ember.Mixin.create({
 });
 
 
-Ember.FormController = Ember.ObjectController.extend(FormMixin);
+Ember.FormController = Ember.Controller.extend(FormMixin);
 
 
 export default FormMixin;

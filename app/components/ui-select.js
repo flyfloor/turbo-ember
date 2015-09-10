@@ -90,7 +90,6 @@ export default Ember.Component.extend({
     	this.$('select').dropdown({
     		maxSelections: that.get('maxSelections') || 5,
 			allowAdditions: that.get('allowAdditions'),
-    		apiSettings: that.get('api') ? { url: this.get('api') } : false,
     		onChange: function(value, text, $choice){
     			that.set('value', value);
     		}
