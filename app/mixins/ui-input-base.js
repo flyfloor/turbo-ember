@@ -73,21 +73,44 @@ export default Ember.Mixin.create({
 	disabled:false,
 
 	/**
+	 * the input readonly status 
+	 *
+	 * @property {Ember.Boolean} readonly
+	 */
+	readonly:false,
+
+	/**
 	 * Class names to apply to the button
 	 *
 	 * @property {Ember.Array} classNames
 	 */
-	classNameBindings: ['_uiClass','disabled:disabled:', 'theme', '_inputClass', 'focus:focus:', 'loading:loading:', 'error:error:'],
+	classNameBindings: ['_uiClass','disabled:disabled:', 'theme', '_componentClass', 'focus:focus:', 'loading:loading:', 'error:error:'],
 	_uiClass: 'ui',
-	_inputClass:'input',
+	_componentClass:'input',
+	
+    /**
+     * Attribute bindings for containing div
+     *
+     * @property {Ember.Array} attributeBindings
+     */
+    attributeBindings: [ ],
+
 	// -------------------------------------------------------------------------
 	// Actions
 
 	// -------------------------------------------------------------------------
 	// Events
 
+	/**
+     * @function initialize
+     * @observes "didInsertElement" event
+     * @returns  {void}
+    */
 	initialize: function(argument) {
 		this.$('input').val(this.get('value'));
+		if(this.get('readonly')){
+			this.$('input').attr('readonly', 'readonly');
+		}
 		this.$('input').change(Ember.run.bind(this, function(){
 			this.set('value', this.$('input').val());
 		}));

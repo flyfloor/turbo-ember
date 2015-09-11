@@ -2,46 +2,81 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	/**
-	 * The root component element
-	 *
-	 * @property {Ember.String} tagName
-	 * @default  "button"
-	 */
-	tagName: 'div',
-	value: '',
-	label: '',
+     * The root component element
+     *
+     * @property {Ember.String} tagName
+     * @default  "div"
+     */
+    tagName: 'div',
+
+    /**
+     * value  for the checkbox radio group component
+     *
+     * @property {Ember.String} value
+     */
+    value: '',
+
+    /**
+     * name for the checkbox radio group component
+     *
+     * @property {Ember.String} name
+     */
+    name: '',
+
+    /**
+     *  label for the checkbox radio group component
+     *
+     * @property {Ember.String} label
+     */
+    label: '',
+
+    /**
+     * name key for option
+     *
+     * @property {Ember.String} namePath
+     */
+    namePath: 'name',
+
+    /**
+     * value key for option
+     *
+     * @property {Ember.String} valuePath
+     */
+    valuePath: 'value',
+	
+	/**
+     * if allow empty option
+     *
+     * @property {Ember.String} allowBlank
+     */
 	allowBlank: true,
-	allowAdditions: false,
-	search: 'search',
+
+	/**
+     * placeHolder for blank option
+     *
+     * @property {Ember.String} placeHolder
+     */
 	placeHolder: '',
-	valuePath: 'value',
-	namePath: 'name',
+	
+	/**
+     * if allow search option
+     *
+     * @property {Ember.String} allowSearch
+     */
+	allowSearch: true,
+	
+	/**
+     * options for the checkbox component
+     *
+     * @property {Ember.Array} options
+     */
 	options: [],
-	/**
-	 * Class names to apply to the button
-	 *
-	 * @property {Ember.Array} classNames
-	 */
-	classNames: ['field'],
-
-	// -------------------------------------------------------------------------
-	// Actions
-
-	// -------------------------------------------------------------------------
-	// Events
 
 	/**
-	 * Class bindings for the button component
-	 *
-	 * @property {Ember.Array} classNameBindings
-	 */
-
-	/**
-	 * Attribute bindings for the button component
-	 *
-	 * @property {Ember.Array} attributeBindings
-	 */
-
+     * @function initialize
+     * @observes "didInsertElement" event
+     * @returns  {void}
+     */
 	initialize: function (argument) {
 		this.setupOptions();
 	}.on('didInsertElement'),
@@ -58,21 +93,23 @@ export default Ember.Component.extend({
 	 		selectedVal = this.get('value'),
 	 		label = this.get('label'),
 	 		allowBlank = this.get('allowBlank'),
-	 		placeHolder = this.get('placeHolder'),
-	 		search = this.get('search');
+	 		allowSearch = this.get('allowSearch'),
+	 		placeHolder = this.get('placeHolder');
 
 	 	this.$().empty();
-	 	
 	 	// init select option
 	 	let selectDom = '';
+	 	let search = allowSearch ? 'search' : '';
+	 	// init lable
 	 	if(label){
 	 		selectDom += '<label>'+label+'</label>';
 	 	}
-		selectDom += '<select class="ui dropdown '+search+'">';
+	 	// init select
+		selectDom += '<select class="ui '+ search +' dropdown ">';
+		// init blank
 		if (allowBlank){
 			selectDom += '<option value="">'+placeHolder+'</option>';
 		}
-
 		if (options) {
 			options.forEach(function(item){
 				let selected = '';
@@ -88,8 +125,6 @@ export default Ember.Component.extend({
 
 		let that = this;
     	this.$('select').dropdown({
-    		maxSelections: that.get('maxSelections') || 5,
-			allowAdditions: that.get('allowAdditions'),
     		onChange: function(value, text, $choice){
     			that.set('value', value);
     		}

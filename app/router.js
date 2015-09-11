@@ -13,7 +13,7 @@ Router.map(function() {
     this.route('ui-button');
     this.route('ui-panel');
     this.route('ui-checkbox');
-    this.route('ui-multi-checkbox');
+    this.route('ui-checkbox-group');
     this.route('ui-select');
     this.route('ui-multi-select');
     this.route('ui-dropdown');
@@ -21,6 +21,7 @@ Router.map(function() {
     this.route('ui-radio-group');
     this.route('ui-label');
     this.route('ui-modal');
+    this.route('ui-form');
     this.route('form');
   });
 

@@ -3,5 +3,5 @@ import UiInputBase from '../mixins/ui-input-base';
 
 export default Ember.Component.extend(UiInputBase, {
 	_uiClass: '',
-	_inputClass:'field',
+	_componentClass:'field',
 });

@@ -8,13 +8,6 @@ export default Ember.Component.extend({
      * @default  "button"
      */
     tagName: 'button',
-    
-    /**
-     * Class names to apply to the button
-     *
-     * @property {Ember.Array} classNames
-     */
-    classNames: [ 'ui', 'button'],
 
     // -------------------------------------------------------------------------
     // Actions
@@ -33,16 +26,27 @@ export default Ember.Component.extend({
     },
 
     /**
-     * Class bindings for the button component
+     * Class names to apply to the button
      *
-     * @property {Ember.Array} classNameBindings
+     * @property {Ember.Array} classNames
      */
-    classNameBindings: ['theme', 'color', 'size', 'disabled:disabled:', 'loading:loading:'],
-    theme: '',
-    color: '',
-    size: '',
+    classNameBindings: ['_uiClass','disabled:disabled:', 'loading:loading:', 'theme', '_componentClass'],
+    _uiClass: 'ui',
+    _componentClass:'button',
+
+    /**
+     * the button loading status
+     *
+     * @property {Ember.Boolean} loading
+     */
+    loading:false,
+
+    /**
+     * the button error status 
+     *
+     * @property {Ember.Boolean} error
+     */
     disabled:false,
-    loading: false,
     /**
      * Attribute bindings for the button component
      *

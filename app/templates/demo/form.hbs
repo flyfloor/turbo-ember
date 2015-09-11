@@ -39,7 +39,7 @@
         {{#ui-form-input value=model.nickname label="昵称" }}{{/ui-form-input}}
         {{#ui-select label="性别" options=genderOptions value=model.gender }}{{/ui-select}}
     </div>
-    {{#ui-multi-checkbox label="喜欢的分类" value=model.category options=category labelPath="name" valuePath="id" }}{{/ui-multi-checkbox}}
+    {{#ui-checkbox-group theme="grouped" label="喜欢的分类" value=model.category options=category labelPath="name" valuePath="id" }}{{/ui-checkbox-group}}
     <div class="inline fields" >
         <label>地址</label>
         {{#ui-select placeHolder="省" options=provinceOptions value=model.province valuePath="id" namePath="name" }}{{/ui-select}}

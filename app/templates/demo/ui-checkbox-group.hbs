@@ -7,7 +7,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox theme="inline fields" value=checkvalue }}
+                        {{#ui-checkbox-group theme="inline fields" value=checkvalue }}
                             <label>choose company</label>
                             <div class="field" >
                                 {{#ui-checkbox  value="apple" }}apple{{/ui-checkbox}}
@@ -18,7 +18,7 @@
                             <div class="field" >
                                 {{#ui-checkbox  value="dropbox" }}dropbox{{/ui-checkbox}}
                             </div>
-                        {{/ui-multi-checkbox}}
+                        {{/ui-checkbox-group}}
                     </div>
                     <div class="meta" >
                         {{checkvalue}}
@@ -29,7 +29,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox theme="grouped fields" label="choose company" options=options value=checkvalue2 }}{{/ui-multi-checkbox}}
+                        {{#ui-checkbox-group theme="grouped fields" label="choose company" options=options value=checkvalue2 }}{{/ui-checkbox-group}}
                     </div>
                     <div class="meta" >
                         {{checkvalue2}}
@@ -40,7 +40,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-multi-checkbox label="choose company" theme="inline fields" options=options value=checkvalue3 }}{{/ui-multi-checkbox}}
+                        {{#ui-checkbox-group label="choose company" theme="inline fields" options=options value=checkvalue3 }}{{/ui-checkbox-group}}
                     </div>
                     <div class="meta" >
                         {{checkvalue3}}
