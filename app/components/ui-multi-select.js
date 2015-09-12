@@ -1,78 +1,44 @@
 import Ember from 'ember';
+import UiSelectBase from '../mixins/ui-select-base';
 
-export default Ember.Component.extend({
-	/**
-	 * The root component element
-	 *
-	 * @property {Ember.String} tagName
-	 * @default  "button"
-	 */
-	tagName: 'div',
-	value: [],
-	label: 'multi select',
-	allowBlank: true,
-	allowAdditions: false,
-	placeHolder: 'type something...',
-	/**
-	 * Class names to apply to the button
-	 *
-	 * @property {Ember.Array} classNames
-	 */
-	classNames: ['field'],
+export default Ember.Component.extend(UiSelectBase, {
+	 /**
+     * value  for the checkbox radio group component
+     *
+     * @property {Ember.String} value
+     */
+    value: [],
 
-	// -------------------------------------------------------------------------
-	// Actions
+    /**
+     * if allow search option
+     *
+     * @property {Ember.String} allowSearch
+     */
+    allowMulti: true,
 
-	// -------------------------------------------------------------------------
-	// Events
+    /**
+     * @function setupOptions 
+     * @observes "options" property
+     * @returns  {void}
+    */
+    setupOptions: function(){
+        let selectDom =  this.assembleDom();
 
-	/**
-	 * Class bindings for the button component
-	 *
-	 * @property {Ember.Array} classNameBindings
-	 */
-	// classNameBindings: ['theme', 'color', 'size'],
-	// theme: '',
-	// color: '',
-
-	/**
-	 * Attribute bindings for the button component
-	 *
-	 * @property {Ember.Array} attributeBindings
-	 */
-
-	initialize: function (argument) {
-		let config = {
-			maxSelections: this.get('maxSelections') || 5,
-			allowAdditions: this.get('allowAdditions'),
-		}
-
-		// console.log(`old value ${this.get('value')}`)
-
-		let [optionsVal, selectedVal] = [this.get('options'), this.get('value')];
-		
-		// if remote
-		if (this.get('api')) config.apiSettings = { url: this.get('api') };
-		
-		// init select option
-		if (optionsVal) {
-			let $optionsDom = this.$('option');
-			for (let i = 0; i < selectedVal.length; i++) 
-				for (let j = 0; j < $optionsDom.length; j++) 
-					if (selectedVal[i] === this.$('option').eq(j).val()){
-						this.$('option').eq(j).attr('selected', 'selected');
-						break;
-					}
-		}
-
-		
-		// expose value
-		this.$('select').change(Ember.run.bind(this, function() {
-		  	this.set('value', this.$('select').val() || []);
-		}));
-
-		// dropdown init
-    	this.$('select').dropdown(config)
-
-	}.on('didInsertElement')
+        this.$().empty();
+        this.$().append(selectDom);
+        let that = this;
+        this.$('select').dropdown({
+            onAdd:function(addedValue, addedText, $addedChoice){
+            	let value = that.get('value');
+                value.push(addedValue);
+                that.set('value', value.toArray());
+            },
+            onRemove:function(removedValue, removedText, $removedChoice){
+            	let value = that.get('value');
+                value.pop(removedValue);
+                that.set('value', value.toArray());
+            }
+        });
+        
+     }.observes('options'),
 });
