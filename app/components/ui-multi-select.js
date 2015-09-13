@@ -30,12 +30,12 @@ export default Ember.Component.extend(UiSelectBase, {
         this.$('select').dropdown({
             onAdd:function(addedValue, addedText, $addedChoice){
             	let value = that.get('value');
-                value.push(addedValue);
+                value.addObject(addedValue);
                 that.set('value', value.toArray());
             },
             onRemove:function(removedValue, removedText, $removedChoice){
-            	let value = that.get('value');
-                value.pop(removedValue);
+                let value = that.get('value');
+                value.removeObject(removedValue);
                 that.set('value', value.toArray());
             }
         });

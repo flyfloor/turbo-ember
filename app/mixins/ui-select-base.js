@@ -58,6 +58,13 @@ export default Ember.Mixin.create({
      * @property {Ember.String} placeHolder
      */
     placeHolder: '',
+
+    /**
+     * the input theme
+     *
+     * @property {Ember.String} theme
+     */
+    theme: '',
     
     /**
      * if allow search option
@@ -80,6 +87,12 @@ export default Ember.Mixin.create({
      */
     options: [],
 
+    /**
+     * Class names to apply to the button
+     *
+     * @property {Ember.Array} classNames
+     */
+    classNameBindings: ['theme'],
     /**
      * @function initialize
      * @observes "didInsertElement" event
@@ -105,7 +118,7 @@ export default Ember.Mixin.create({
                 that.set('value', value);
             }
         });
-        
+
      }.observes('options'),
 
     /**
