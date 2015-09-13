@@ -6,26 +6,26 @@ export default Ember.Mixin.create({
      * The root component element
      *
      * @property {Ember.String} tagName
-     * @default  "div"
+     * @default  "select"
      */
     tagName: 'div',
 
     /**
-     * value  for the checkbox radio group component
+     * value  for the select radio group component
      *
      * @property {Ember.String} value
      */
     value: '',
 
     /**
-     * name for the checkbox radio group component
+     * name for the select radio group component
      *
      * @property {Ember.String} name
      */
     name: '',
 
     /**
-     *  label for the checkbox radio group component
+     *  label for the select radio group component
      *
      * @property {Ember.String} label
      */
@@ -60,7 +60,7 @@ export default Ember.Mixin.create({
     placeHolder: '',
 
     /**
-     * the input theme
+     * the select theme
      *
      * @property {Ember.String} theme
      */
@@ -81,18 +81,43 @@ export default Ember.Mixin.create({
     allowMulti: false,
     
     /**
-     * options for the checkbox component
+     * options for the select component
      *
      * @property {Ember.Array} options
      */
     options: [],
 
     /**
-     * Class names to apply to the button
+     * Class names to apply to the select
      *
      * @property {Ember.Array} classNames
      */
     classNameBindings: ['theme'],
+
+    /**
+     * attribute to apply to the select
+     *
+     * @property {Ember.String} multiple
+     */
+    attributeBindings: [],
+
+    /**
+     * attribute to apply to the select
+     *
+     * @property {Ember.String} multiple
+     */
+    multiple: function(){
+        return this.get('allowMulti') ? 'multiple=""' : '';
+    }.property('allowMulti'),
+
+    /**
+     * attribute to apply to the select
+     *
+     * @property {Ember.String} multiple
+     */
+    search: function(){
+        return this.get('allowSearch') ? 'search' : '';
+    }.property('allowSearch'),
     /**
      * @function initialize
      * @observes "didInsertElement" event
@@ -133,21 +158,18 @@ export default Ember.Mixin.create({
             selectedVal = this.get('value'),
             label = this.get('label'),
             allowBlank = this.get('allowBlank'),
-            allowSearch = this.get('allowSearch'),
             allowMulti = this.get('allowMulti'),
             placeHolder = this.get('placeHolder');
 
         // init select option
         let selectDom = '';
-        let search = allowSearch ? 'search' : '';
-        let multi = allowMulti ? 'multiple=""' : '';
         // init lable
         if(label){
             selectDom += '<label>'+label+'</label>';
         }
 
         // init select
-        selectDom += '<select '+multi+' class="ui '+ search +' dropdown ">';
+        selectDom += '<select '+this.get('multiple')+' class="ui '+ this.get('search') +' dropdown ">';
         // init blank
         if (allowBlank){
             selectDom += '<option value="">'+placeHolder+'</option>';
@@ -175,6 +197,8 @@ export default Ember.Mixin.create({
                 });
             }
         }
+
+        selectDom += '</select>';
 
         return selectDom;
     }

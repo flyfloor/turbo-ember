@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	value: 'cctv',
-	value1: 'choice',
+	value1: '',
 	options: [
 	    {'name':'google', 'value':'google'},
 	    {'name':'apple', 'value':'apple'},
