@@ -3,11 +3,12 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'div',
 	display: false,
+	transition: 'scale',
 	/**
 	 * Class names to apply to the button
 	 *
 	 * @property {Ember.Array} classNames
-	 */
+	 // */
 	classNames: ['ui', 'modal'],
 
 	// -------------------------------------------------------------------------
@@ -17,6 +18,10 @@ export default Ember.Component.extend({
 	// Events
 	
 	classNameBindings: [],
+
+	setDisplay: function(){
+		this.get('display') ? this.$().modal('show') : this.$().modal('false');
+	}.observes('display'),
 	/**
 	 * Alert external code about the click
 	 *
@@ -36,11 +41,13 @@ export default Ember.Component.extend({
 	 * @property {Ember.Array} attributeBindings
 	 */
 	initialize: function(argument) {
-		let display = this.get('display');
-		if (display) {
-			this.$('').modal('show');
-		} else {
-			this.$('').modal('hide');
-		}
+		let that = this;
+
+		this.$().modal({
+			transition: this.get('transition'),
+			onHide(){
+				that.set('display', false);
+			}
+		})
 	}.on('didInsertElement'),
 });
