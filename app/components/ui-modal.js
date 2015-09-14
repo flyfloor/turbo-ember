@@ -17,7 +17,8 @@ export default Ember.Component.extend({
 	// -------------------------------------------------------------------------
 	// Events
 	
-	classNameBindings: [],
+	classNameBindings: ['_uiClass', 'theme'],
+	_uiClass: 'ui',
 
 	setDisplay: function(){
 		this.get('display') ? this.$().modal('show') : this.$().modal('false');

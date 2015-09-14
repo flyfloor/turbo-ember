@@ -22,7 +22,7 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
       'font-src': "'self' data: localhost",
       'connect-src': "'self'",
-      'img-src': "'self' www.adesk.com www.androidesk.com",
+      'img-src': "*",
       'style-src': "'self' 'unsafe-inline' localhost",
       'frame-src': "'self'"
     },
