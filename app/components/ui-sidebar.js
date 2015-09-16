@@ -4,12 +4,13 @@ export default Ember.Component.extend({
 	tagName: 'div',
 	display: false,
 	transition: 'scale',
+	direction: 'left',
 	/**
 	 * Class names to apply to the button
 	 *
 	 * @property {Ember.Array} classNames
 	 // */
-	classNames: ['ui', 'modal'],
+	classNames: ['ui', 'sidebar', 'inverted vertical'],
 
 	// -------------------------------------------------------------------------
 	// Actions
@@ -17,11 +18,11 @@ export default Ember.Component.extend({
 	// -------------------------------------------------------------------------
 	// Events
 	
-	classNameBindings: ['_uiClass', 'theme'],
+	classNameBindings: ['_uiClass', 'direction', 'theme'],
 	_uiClass: 'ui',
 
 	setDisplay: function(){
-		this.get('display') ? this.$().modal('show') : this.$().modal('false');
+		this.get('display') ? this.$().sidebar('toggle') : this.$().sidebar('false');
 	}.observes('display'),
 	/**
 	 * Alert external code about the click
@@ -41,14 +42,10 @@ export default Ember.Component.extend({
 	 *
 	 * @property {Ember.Array} attributeBindings
 	 */
-	initialize: function(argument) {
-		let that = this;
 
-		this.$().modal({
-			transition: this.get('transition'),
-			onHide(){
-				that.set('display', false);
-			}
-		})
-	}.on('didInsertElement'),
+	initialize: function(argument){
+		this.$().sidebar({
+			dimPage: false
+		});
+	}.on('didInsertElement')
 });
