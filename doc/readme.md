@@ -23,3 +23,7 @@ rm -rf .cahce/bower
 
 ## property should not be set
 
+
+## ember addone permission denyed 
+
+sudo chown -R zhyq /usr/local/lib/node_modules/ember-cli/blueprints/addon
